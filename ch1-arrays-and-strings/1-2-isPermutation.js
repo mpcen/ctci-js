@@ -1,6 +1,29 @@
 // Check Permutation: Given two strings, write a method to decide if one is a
 // permutation of the other
 
+// solution comparing 2 sorted strings
+// Time complexity: O(n * log(n));
+function isPermutation(str1, str2) {
+	str1 = str1.split('').sort().join('');
+	str2 = str2.split('').sort().join('');
+
+	return str1 === str2;
+}
+
+// TEST CASES
+let str1 = 'abc';
+let str2 = 'cbb';
+
+let str3 = 'hello world';
+let str4 = 'world olleh';
+
+console.log(isPermutation(str1, str2)); //false
+console.log(isPermutation(str3, str4)); // true
+
+/*
+// solution using hashtable
+// Time complexity = O(m*n)
+
 function isPermutation(str1, str2) {
 	if(str1.length !== str2.length) return false;
 
@@ -50,4 +73,4 @@ let str4 = 'world olleh';
 console.log(isPermutation(str1, str2)); //false
 console.log(isPermutation(str3, str4)); // true
 
-// Time complexity = O(m*n)
+*/
