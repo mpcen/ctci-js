@@ -49,3 +49,5 @@ let str4 = 'world olleh';
 
 console.log(isPermutation(str1, str2)); //false
 console.log(isPermutation(str3, str4)); // true
+
+// Time complexity = O(m*n)
