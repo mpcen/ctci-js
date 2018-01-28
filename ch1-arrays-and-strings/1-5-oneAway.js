@@ -22,6 +22,9 @@ function oneAway(str1, str2) {
 	const str2Map = {};
 	let str2MapLength = 0;
 
+	// i can make a function called createMap to handle the creation
+	// of these two if i wanted...
+	
 	// create map from str1
 	for(let char of str1) {
 		if(!str1Map[char]) {
