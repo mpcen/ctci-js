@@ -43,3 +43,5 @@ console.log(stringCompression(str2)) // a6
 
 let str3 = 'abc';
 console.log(stringCompression(str3)) // abc
+
+// Time complexity O(n)
