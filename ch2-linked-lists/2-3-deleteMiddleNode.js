@@ -20,7 +20,7 @@ class Node {
 
 class LinkedList {
 	constructor(data) {
-		this.head = data;
+		this.head = new Node(data);
 	}
 
 	insert(data) {
