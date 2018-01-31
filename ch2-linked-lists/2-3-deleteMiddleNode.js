@@ -20,11 +20,11 @@ class Node {
 
 class LinkedList {
 	constructor(data) {
-		this.head = new Node(data);
+		this.head = data;
 	}
 
 	insert(data) {
-		if(!this.head) {
+		if(!this.head || !this.head.data) {
 			return this.head = new Node(data);
 		}
 
@@ -40,18 +40,15 @@ class LinkedList {
 
 function deleteMiddleNode(ll, mid) {
 	let currentNode = ll.head;
-	let prevNode = null;
 
-	while(currentNode.next) {
-		prevNode = currentNode;
+	while(currentNode.data !== mid) {
 		currentNode = currentNode.next;
-
-		if(currentNode.data === mid) {
-			prevNode.next = currentNode.next;
-			currentNode = currentNode.next;
-			return;
-		}
 	}
+
+	currentNode.data = currentNode.next.data;
+	currentNode.next = currentNode.next.next;
+
+	return ll;
 }
 
 //TEST CASE
