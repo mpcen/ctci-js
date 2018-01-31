@@ -31,33 +31,27 @@ class LinkedList {
 	}
 }
 
-function kthToLast(ll, k, count = 0) {
-	if(!ll.head) return null;
-	if(count === ll.size - 1) return ll.head;
-
-	return kthToLast(ll.head.next, k, count += 1)
-}
 
 // ITERATIVE SOLUTION IN O(N) TIME
-// function kthToLast(ll, k) {
-// 	if(!ll.head) return;
+function kthToLast(ll, k) {
+	if(!ll.head) return;
 	
-// 	let currentNode = ll.head;
-// 	let prevNode = ll.head;
+	let currentNode = ll.head;
+	let prevNode = ll.head;
 
-// 	for(let i = 0; i < k; i++) {
-// 		currentNode = currentNode.next;
+	for(let i = 0; i < k; i++) {
+		currentNode = currentNode.next;
 
-// 		if(!currentNode) break;
-// 	}
+		if(!currentNode) break;
+	}
 
-// 	while(currentNode) {
-// 		prevNode = prevNode.next;
-// 		currentNode = currentNode.next;
-// 	}
+	while(currentNode) {
+		prevNode = prevNode.next;
+		currentNode = currentNode.next;
+	}
 
-// 	return prevNode;
-// }
+	return prevNode;
+}
 
 const ll = new LinkedList('a');
 ll.insertTail('b')
