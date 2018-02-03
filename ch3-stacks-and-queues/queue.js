@@ -19,7 +19,7 @@ class Queue {
 	constructor(data) {
 		const newItem = new QueueNode(data);
 
-		this.front = newItem;
+		this.first = newItem;
 		this.last = newItem;
 	}
 
@@ -40,7 +40,7 @@ class Queue {
 	remove() {
 		if(!this.first) return null;
 
-		const item = this.fist;
+		const item = this.first;
 
 		this.first = item.next;
 
