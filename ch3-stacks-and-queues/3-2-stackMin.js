@@ -7,7 +7,7 @@
 
 /*
 	Explanation:
-	
+	Track the min value at the time of new node push so you're always able to get the min in O(1) from top of stack.
 */
 
 class StackNode {
@@ -26,7 +26,6 @@ class Stack {
 	push(data) {
 		let newItem = new StackNode(data);
 
-		// if stack is empty
 		if(!this.top) {
 			this.top = newItem;
 			
