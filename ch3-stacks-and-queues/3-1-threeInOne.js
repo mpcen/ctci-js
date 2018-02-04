@@ -3,7 +3,7 @@
 	Describe how you could use a single array to implement three stacks.
 */
 
-class TripleStack = {
+class TripleStack {
 	constructor() {
 		this.stacks = [null, null, null];
 		this.stackSizes = [0, 0, 0];
@@ -23,8 +23,54 @@ class TripleStack = {
 
 		this.stackSizes[stack]++;
 
+		// increment tops for all stacks after the stack in work
 		for(let i = stack; i <= 2; i++) {
 			this.stackTops[i]++;
 		}
 	}
+
+	pop(stack) {
+		if(this.stackSizes[stack] === 0) {
+			return null;
+		}
+
+		if(this.stackSizes[stack] === 1) {
+			let itemRemoved = this.stacks[this.stackTops[stack]];
+
+			this.stacks[this.stackTops[stack]] = null;
+			this.stackSizes[stack]--;
+			return itemRemoved;
+		}
+
+		let itemRemoved = this.stacks.splice(this.stackTops[stack], 1);
+
+		this.stackSizes[stack]--;
+
+		// decrement stackTops for stacks that come after the stack being worked on
+		for(let i = stack; i <= 2; i++) {
+			this.stackTops[i]--;
+		}
+
+		return itemRemoved;
+	}
+
+	peek(stack) {
+		return this.stacks[this.stackTops[stack]];
+	}
+
+	isEmpty(stack) {
+		return this.stackSizes[stack] === 0;
+	}
 }
+
+
+
+// TEST CASES
+const stacks = new TripleStack()
+
+stacks.push(0, 'a1')
+stacks.push(0, 'a2')
+stacks.push(1, 'b1')
+stacks.push(1, 'b2')
+stacks.push(2, 'c1')
+stacks.push(2, 'c2')
