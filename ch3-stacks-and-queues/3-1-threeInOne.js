@@ -74,3 +74,10 @@ stacks.push(1, 'b1')
 stacks.push(1, 'b2')
 stacks.push(2, 'c1')
 stacks.push(2, 'c2')
+
+console.log(stacks) // [a1, a2, b1, b2, c1, c2]
+stacks.pop(0) // [a1, b1, b2, c1, c2]
+stacks.pop(2) // [a1, b1, b2, c1]
+stacks.pop(2) // [a1, b1, b2, null]
+stacks.isEmpty(2) // true
+stacks.peek(0) // a1
