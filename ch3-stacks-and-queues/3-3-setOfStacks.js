@@ -65,7 +65,9 @@ class SetOfStacks {
 	}
 }
 
+// TEST CASES
 const stacks = new SetOfStacks(3)
+
 stacks.push('a1')
 stacks.push('a2')
 stacks.push('a3')
@@ -73,3 +75,19 @@ stacks.push('a3')
 stacks.push('b1')
 stacks.push('b2')
 stacks.push('b3')
+
+/*
+	SetOfStacks:
+		[
+			s0: [a1, a2, a3],
+			s1: [b1, b2, b3]
+		]
+*/
+
+stacks.pop() // b3
+stacks.pop() // b2
+stacks.pop() // b1
+stacks.pop() // a3
+stacks.pop() // a2
+stacks.pop() // a1
+stacks.pop() // undefined
