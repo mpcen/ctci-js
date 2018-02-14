@@ -49,37 +49,58 @@ class TreeNode {
 	}
 }
 
-function createListFromTreeDepths(rootNode) {
-	const treeQueue = [rootNode, 'end'];	
+// RECURSIVE SOLUTION
+function createListFromTreeDepths(tree) {
 	const lists = [];
-	let listQueue = [];
-
-	while(treeQueue.length) {	
-		const node = treeQueue.shift();
-	
-		if(node !== 'end') {
-			if(node.left) treeQueue.push(node.left);
-			if(node.right) treeQueue.push(node.right);
-			
-			listQueue.push(node.data);
-		} else {
-			if(treeQueue.length) {
-				treeQueue.push('end');								
-			}
-
-			const ll = new LinkedList(listQueue.shift());
-
-			while(listQueue.length) {
-				ll.addToTail(listQueue.shift());
-			}
-
-			lists.push(ll);
-			listQueue = [];
-		}
-	}
-
+	addToList(lists, tree, 0);
 	return lists;
 }
+
+function addToList(lists, node, depth) {
+	if(node) {
+		if(!lists[depth]) {
+			lists[depth] = new LinkedList(node.data);
+		} else {
+			lists[depth].addToTail(node.data);
+		}		
+
+		addToList(lists, node.left, depth + 1);
+		addToList(lists, node.right, depth + 1);
+	}
+}
+
+//ITERATIVE SOLUTION
+// function createListFromTreeDepths(rootNode) {
+// 	const treeQueue = [rootNode, 'end'];	
+// 	const lists = [];
+// 	let listQueue = [];
+
+// 	while(treeQueue.length) {	
+// 		const node = treeQueue.shift();
+	
+// 		if(node !== 'end') {
+// 			if(node.left) treeQueue.push(node.left);
+// 			if(node.right) treeQueue.push(node.right);
+			
+// 			listQueue.push(node.data);
+// 		} else {
+// 			if(treeQueue.length) {
+// 				treeQueue.push('end');								
+// 			}
+
+// 			const ll = new LinkedList(listQueue.shift());
+
+// 			while(listQueue.length) {
+// 				ll.addToTail(listQueue.shift());
+// 			}
+
+// 			lists.push(ll);
+// 			listQueue = [];
+// 		}
+// 	}
+
+// 	return lists;
+// }
 
 // TEST CASE
 const tree = new TreeNode(4);
